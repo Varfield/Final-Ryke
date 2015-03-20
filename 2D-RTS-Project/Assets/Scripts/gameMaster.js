@@ -182,6 +182,37 @@ if(!isSurrendered)
 	if(defIsTile) {
 		DefScript=def.GetComponent(tileScript);
 		DefScript.sendUnit=false;
+		
+		if(DefScript.whichTeam==0)
+		{
+		
+		var roll=Random.Range(0,20);
+		if (roll<=1.3)
+		{
+		
+			var tilesArrayZ=GameObject.FindGameObjectsWithTag("test1")+GameObject.FindGameObjectsWithTag("test2")
+				+GameObject.FindGameObjectsWithTag("test3")+GameObject.FindGameObjectsWithTag("test4");
+				
+				for(var zi=0;zi<tilesArrayZ.length;zi++)
+				{
+				
+				var tilesArrayZScript=tilesArrayZ[zi].GetComponent("tileScript");
+				var roll2=Random.Range(-1,4);
+					if(roll2<=0)
+					{
+					if(!(tilesArrayZScript.whichTeam==0))
+						tilesArrayZScript.isNuked=true;
+					}
+				
+				
+				}
+			
+		}
+		
+		}
+		
+		
+		
 	}
 	else 
 		DefScript=def.GetComponent("unit");
