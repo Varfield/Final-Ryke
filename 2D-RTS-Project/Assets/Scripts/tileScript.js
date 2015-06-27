@@ -14,6 +14,7 @@ var thisTile: GameObject;
 var inYield : boolean;
 var targetUnit: GameObject;
 var targetUnitScript;
+var isNear: boolean;
 //We'll think of some fancy way to ID teams, 
 // Team 1=1
 // Team 2=-1;
@@ -37,10 +38,12 @@ var UnitArray;
 var addUnits;
 var spawnUnit: boolean;
 var murderCitizens=false;
-
+var temp;
 var isSurrendered:boolean;
 function Start () {
 //All this will be pulled from a database later on. 
+temp=renderer.materials;
+isNear=false;
  thisTile.tag = "test0";
  FortLevel=1;
  UnitsStored=1000;
@@ -70,7 +73,7 @@ function Start () {
 //      	tileType = 3;
 //      else if(rand >= 3 && rand < 4)
 //      	tileType = 4;
-      	 var temp = renderer.materials;
+      	 
       	 temp[0]=border;
       	if(tileType==1)
       	{
@@ -104,7 +107,25 @@ function Start () {
 }
 
 function Update () {
-
+	
+	if(!isNear)
+	{
+	temp[1].color.g=1;
+	temp[1].color.b=1;
+	temp[1].color.r=1;
+	}
+	if(isNear && GameObject.FindWithTag("Master").GetComponent(gameMaster).whichTurn==1)
+	{
+	temp[1].color.g=.50;
+	temp[1].color.r=.50;
+	}
+	else if(isNear && GameObject.FindWithTag("Master").GetComponent(gameMaster).whichTurn==-1)
+	{
+	temp[1].color.g=.50;
+	temp[1].color.b=.50;
+	}
+	materials=temp;
+	
 	if(isSurrendered)
 	{
 		wipeSelections();

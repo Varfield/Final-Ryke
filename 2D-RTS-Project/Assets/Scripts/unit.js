@@ -71,7 +71,7 @@ if(isSurrendered)
 		      
 		     
 		      
-		    if(((gameObject.transform.position.x-targetUnit.transform.position.x)<6 && (gameObject.transform.position.x-targetUnit.transform.position.x)>-6) && (gameObject.transform.position.z-targetUnit.transform.position.z)<6 && (gameObject.transform.position.z-targetUnit.transform.position.z)>-6)
+		    if(((gameObject.transform.position.x-targetUnit.transform.position.x)<2.5 && (gameObject.transform.position.x-targetUnit.transform.position.x)>-2.5) && (gameObject.transform.position.z-targetUnit.transform.position.z)<2.5 && (gameObject.transform.position.z-targetUnit.transform.position.z)>-2.5)
 		      if((targetUnitScript.UnitColor == -1) && (UnitColor==1)) 
 	      		{
 	      		
@@ -138,6 +138,7 @@ if(isSurrendered)
 			
 		}
 		
+
 		
 	
 	
@@ -152,7 +153,7 @@ function OnMouseDown() {
 	wipeUnitSelections();
 	isSelected=!isSelected;
 	wipeSelections();
-	
+	coloration();
 	thisSel=true;
 	overrideInfo = true;
 	GameObject.FindWithTag("hud").GetComponent(guiOverlay).currentUnit(this.gameObject);
@@ -190,6 +191,72 @@ function wipeSelections()
      }
 
 }
+function coloration()
+{
+var tilesArray;
+var tileTargetScript;
+print("hit");
+tilesArray=GameObject.FindGameObjectsWithTag("test1")+GameObject.FindGameObjectsWithTag("test2")
+		+GameObject.FindGameObjectsWithTag("test2")+GameObject.FindGameObjectsWithTag("test4");
+	
+	for(var zi=0;zi<tilesArray.length;zi++)
+	{
+	 
+	  tileTargetScript=(tilesArray[zi].GetComponent("tileScript"));
+     
+     
+      if(((gameObject.transform.position.x-tilesArray[zi].transform.position.x)<2.5 && 
+       ( gameObject.transform.position.x-tilesArray[zi].transform.position.x)>-2.5) &&
+       (gameObject.transform.position.z-tilesArray[zi].transform.position.z)<2.5 && 
+       (gameObject.transform.position.z-tilesArray[zi].transform.position.z)>-2.5) 
+       {
+         tileTargetScript.isNear=true;
+         
+      
+       }
+       else
+        {
+      
+     tileTargetScript.isNear=false;
+         
+       
+       }
+        
+        
+     }
+     
+     
+    ////////////////Unit////////////////////
+    
+}
+function ClearColoration()
+{
+
+
+var tilesArray;
+var tileTargetScript;
+print("hit");
+tilesArray=GameObject.FindGameObjectsWithTag("test1")+GameObject.FindGameObjectsWithTag("test2")
+		+GameObject.FindGameObjectsWithTag("test2")+GameObject.FindGameObjectsWithTag("test4");
+	
+	for(var zi=0;zi<tilesArray.length;zi++)
+	{
+	 
+	  tileTargetScript=(tilesArray[zi].GetComponent("tileScript"));
+     
+     
+      
+     tileTargetScript.isNear=false;
+         
+       
+       
+        
+        
+     }
+
+
+}
+
 function getUnitsStored(){
 	return UnitsStored;
 }

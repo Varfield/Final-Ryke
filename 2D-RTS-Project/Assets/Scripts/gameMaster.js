@@ -167,6 +167,7 @@ if(!isSurrendered)
 	
 
 	attkScript=	attk.GetComponent(unit);
+		attkScript.ClearColoration();
 	if(attkScript.whichTeam==1) {
 		moraleModiferAttk=MoraleModifierB;
 		moraleModiferDef=MoraleModifierR;
@@ -180,6 +181,7 @@ if(!isSurrendered)
 
 	}
 	if(defIsTile) {
+	
 		DefScript=def.GetComponent(tileScript);
 		DefScript.sendUnit=false;
 		
@@ -223,9 +225,11 @@ if(!isSurrendered)
 		{
 		
 			battleOn=false;
-			if(defIsTile)
+			if(defIsTile) {
 				DefScript.whichTeam=attkScript.UnitColor;
 				attkScript.UnitsStored=1000;
+				attk.transform.position= Vector3(def.transform.position.x,attk.transform.position.y,def.transform.position.z);
+				}
 				
 			//else
 				//attach retreat code here
@@ -237,6 +241,8 @@ if(!isSurrendered)
 						DefScript.whichTeam=attkScript.UnitColor;
 						DefScript.UnitsStored=200;
 						attkScript.UnitsStored=1000;
+						attk.transform.position= Vector3(def.transform.position.x,attk.transform.position.y,def.transform.position.z);
+						
 						
 						}
 					else
@@ -379,9 +385,10 @@ if(!isSurrendered)
 			{
 			
 				battleOn=false;
-				if(defIsTile)
+				if(defIsTile) {
 					DefScript.whichTeam=attkScript.UnitColor;
-					
+					attk.transform.position= Vector3(def.transform.position.x,attk.transform.position.y,def.transform.position.z);
+					}
 					break;
 				//else
 					//attach retreat code here
@@ -392,6 +399,7 @@ if(!isSurrendered)
 						if(defIsTile) {
 							DefScript.whichTeam=attkScript.UnitColor;
 							DefScript.UnitsStored=200;
+							attk.transform.position= Vector3(def.transform.position.x,attk.transform.position.y,def.transform.position.z);
 							}
 						else
 							Destroy(def);
