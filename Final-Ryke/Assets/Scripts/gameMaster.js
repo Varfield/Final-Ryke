@@ -229,6 +229,7 @@ if(!isSurrendered)
 				DefScript.whichTeam=attkScript.UnitColor;
 				attkScript.UnitsStored=1000;
 				attk.transform.position= Vector3(def.transform.position.x,attk.transform.position.y,def.transform.position.z);
+				attkScript.coloration();
 				}
 				
 			//else
@@ -241,8 +242,8 @@ if(!isSurrendered)
 						DefScript.whichTeam=attkScript.UnitColor;
 						DefScript.UnitsStored=200;
 						attkScript.UnitsStored=1000;
-						attk.transform.position= Vector3(def.transform.position.x,attk.transform.position.y,def.transform.position.z);
-						
+						attkScript.transform.position= Vector3(def.transform.position.x,attk.transform.position.y,def.transform.position.z);
+						attkScript.coloration();
 						
 						}
 					else

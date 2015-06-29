@@ -81,9 +81,17 @@ var RStyle :Texture2D;
 var RbuttonStyle :Texture2D;
 var RinsetStyle :Texture2D;
 
+var Iron: Texture2D;
+var Steel: Texture2D;
+var OakWood: Texture2D;
+var Mahogany: Texture2D;
+var Grain: Texture2D;
+
+// Unrefined vs Refined Resource
 var style:GUIStyle;
 var buttonStyle:GUIStyle;
 var inSetStyle : GUIStyle;
+var ResourceStyle: GUIStyle;
 //var buttonStyleNOHOVER : GUIStyle;
 
 function Start () {
@@ -185,6 +193,10 @@ function OnGUI() {
 					infoScreenHelp = false;
 					unitScreenHelp = true;
 				}
+				if(GUI.Button(Rect(25,(HUDheight/8)*9,(HUDwidth/8)*1.5,30),"Switch Screen",buttonStyle))
+				{
+				
+				}
 			}
 			else
 			{
@@ -231,7 +243,8 @@ function OnGUI() {
 						for(zi=0;zi<unitsArray.length;zi++)
 						{
 							unitTargetScript=(unitsArray[zi].GetComponent("unit"));
-			      			unitTargetScript.setSelected(false);	
+			      			unitTargetScript.setSelected(false);
+			      			unitTargetScript.ClearColoration();	
 						}
 					}
 				}

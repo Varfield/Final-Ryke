@@ -139,7 +139,8 @@ if(isSurrendered)
 		}
 		
 
-		
+		if(thisSel)
+			coloration();
 	
 	
 		
@@ -153,6 +154,7 @@ function OnMouseDown() {
 	wipeUnitSelections();
 	isSelected=!isSelected;
 	wipeSelections();
+	ClearColoration();
 	coloration();
 	thisSel=true;
 	overrideInfo = true;
@@ -188,6 +190,7 @@ function wipeSelections()
      
       tileTargetScript.setSend(false);
       
+      
      }
 
 }
@@ -198,7 +201,7 @@ var tileTargetScript;
 print("hit");
 tilesArray=GameObject.FindGameObjectsWithTag("test1")+GameObject.FindGameObjectsWithTag("test2")
 		+GameObject.FindGameObjectsWithTag("test2")+GameObject.FindGameObjectsWithTag("test4");
-	
+	if(isSelected) {
 	for(var zi=0;zi<tilesArray.length;zi++)
 	{
 	 
@@ -225,6 +228,13 @@ tilesArray=GameObject.FindGameObjectsWithTag("test1")+GameObject.FindGameObjects
         
      }
      
+     }
+     else
+     {
+	     ClearColoration();
+     
+     
+     }
      
     ////////////////Unit////////////////////
     
@@ -331,6 +341,7 @@ function wipeUnitSelections()
       
      
       unitTargetScript.isSelected=false;
+      unitTargetScript.thisSel=false;
    
      }
 

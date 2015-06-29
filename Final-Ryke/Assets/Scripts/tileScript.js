@@ -9,6 +9,12 @@ var tileType: int;
 var moraleBoost:int;
 var economicBoost:int;
 
+var RawResource: String;
+var RefinedResource: String;
+
+var RawNum;
+var RefNum;
+
 var whichTeam: int;
 var thisTile: GameObject;
 var inYield : boolean;
@@ -114,17 +120,17 @@ function Update () {
 	temp[1].color.b=1;
 	temp[1].color.r=1;
 	}
-	if(isNear && GameObject.FindWithTag("Master").GetComponent(gameMaster).whichTurn==1)
+	if((isNear || sendUnit) && GameObject.FindWithTag("Master").GetComponent(gameMaster).whichTurn==1)
 	{
 	temp[1].color.g=.50;
 	temp[1].color.r=.50;
 	}
-	else if(isNear && GameObject.FindWithTag("Master").GetComponent(gameMaster).whichTurn==-1)
+	else if((isNear || sendUnit) && GameObject.FindWithTag("Master").GetComponent(gameMaster).whichTurn==-1)
 	{
 	temp[1].color.g=.50;
 	temp[1].color.b=.50;
 	}
-	materials=temp;
+	renderer.materials=temp;
 	
 	if(isSurrendered)
 	{
@@ -228,7 +234,7 @@ var temp2 = renderer.materials;
 	      		}
 	      		else if(!isSurrendered){
 		      		targetUnit.transform.position= Vector3(thisTile.transform.position.x,targetUnit.transform.position.y,thisTile.transform.position.z);
-					
+					targetUnitScript.coloration();
 		   			}
 		      }
 		      

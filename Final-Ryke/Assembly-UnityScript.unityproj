@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{38F41216-4E14-0030-DB49-71BC95B5A57C}</ProjectGuid>
+	<ProjectGuid>{4193A28D-0C3A-93F4-5476-382D99862158}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -55,7 +55,6 @@
      <Compile Include="Assets\Scripts\startScreenScript.js" />
      <Compile Include="Assets\Scripts\tileScript.js" />
      <Compile Include="Assets\Scripts\unit.js" />
-     <None Include="Assets\UpdatePipeline.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unityold/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.4/UnityEngine.UI.dll</HintPath>
  </Reference>
